@@ -32,10 +32,14 @@
 
 DEMO_FLASK_SERVICE/
 │
-├── app.py                 # ไฟล์หลักของ Flask และ Routing
-├── requirements.txt        # รายการ dependencies
-├── service/                # โฟลเดอร์เก็บ business logic
-    └── example_service.py  # ตัวอย่าง service logic
+├── templates/ # โฟลเดอร์เก็บไฟล์ HTML templates (สำหรับ render ผ่าน Flask)
+│ └── *.html # Template ต่าง ๆ เช่น index.html, result.html ฯลฯ
+│
+├── app.py # ไฟล์หลักของ Flask สำหรับ run server และ Routing
+├── train_model.py # ไฟล์เทรนโมเดล Machine Learning (ถ้ามีใช้งานในโปรเจกต์)
+├── requirements.txt # รายการ dependencies ที่ต้องติดตั้ง
+├── Dockerfile # คำสั่งสร้าง Docker image สำหรับ deploy แอป
+└── README.md # เอกสารสรุปงานที่ทำ + วิธีใช้งานโปรเจกต์
 
 ```
 
