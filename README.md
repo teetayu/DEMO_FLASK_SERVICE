@@ -73,21 +73,10 @@ python app.py
 
 ##  ตัวอย่าง API ที่ทำ
 
-### GET `/`
-ส่งข้อความตอบกลับว่าระบบทำงานอยู่
-
-### GET `/status`
-ส่งสถานะของระบบ เช่น
-
-```json
-{
-  "status": "OK",
-  "service": "Demo Flask API"
-}
 
 ---
 
-สรุปสิ่งที่ได้ทำในงานนี้ (Summary of Work Done)
+ สรุปสิ่งที่ได้ทำในงานนี้ (Summary of Work Done)
 
 ในงานนี้ได้ทำสิ่งสำคัญดังนี้:
 
