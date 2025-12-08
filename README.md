@@ -1,136 +1,199 @@
 # DEMO_FLASK_SERVICE  
-### รายงานสรุปการทดลองสร้าง Web Service ด้วย Flask  
+### รายงานสรุปผลการทดลองสร้าง Web Service ด้วย Flask  
 
 ---
 
 ##  บทนำ (Introduction)
 
-งานนี้เป็นแบบฝึกหัดเพื่อทดลองสร้าง **Web Service แบบง่าย ๆ ด้วย Flask Framework**  
-โดยอาจารย์ให้โจทย์ให้ลองออกแบบ API พื้นฐานขึ้นมา 1 โปรเจกต์ เพื่อให้เข้าใจหลักการของ Backend  
-ตั้งแต่การรันเซิร์ฟเวอร์, การสร้าง Route, การคืนค่า Response, จนถึงการจัดโครงสร้างโปรแกรมให้ถูกต้อง
+โปรเจกต์นี้เป็นงานที่อาจารย์มอบหมายเพื่อให้ทดลองสร้าง **Web Service พื้นฐานด้วย Flask Framework**  
+โดยมีเป้าหมายเพื่อทำความเข้าใจการทำงานของ Backend เบื้องต้น เช่น การสร้าง API, การรับ–ส่งข้อมูลแบบ JSON,  
+การทำงานของ Web Server และการจัดโครงสร้างโปรเจกต์ให้สามารถพัฒนาต่อได้ในอนาคต
 
-โปรเจกต์นี้จึงถือเป็นการปูพื้นฐานก่อนที่จะทำระบบที่มีความซับซ้อนมากขึ้น เช่น  
-API สำหรับ Machine Learning, ระบบ Database หรือระบบ Authentication
+โค้ดชุดนี้จึงทำหน้าที่เป็น **Demo Service** เพื่อเรียนรู้ก่อนเข้าสู่ระบบที่ซับซ้อนกว่า เช่น การต่อฐานข้อมูล,  
+การสร้าง Machine Learning API, หรือการทำระบบ Authentication
 
 ---
 
-##  สิ่งที่โปรเจกต์นี้ทำ (What This Project Does)
+##  วัตถุประสงค์ของงาน (Project Objectives)
 
-โปรเจกต์นี้เป็น **ตัวอย่างบริการ Flask แบบง่าย ๆ (Demo Service)**  
-ประกอบด้วย:
+โปรเจกต์นี้มีเป้าหมายหลักดังนี้:
 
-- การสร้าง Web Server ด้วย Flask  
-- การกำหนดเส้นทาง (Route) เช่น `/` หรือ `/status`  
-- ส่งข้อมูลกลับเป็น JSON Response  
-- แยกโค้ดเป็นไฟล์เพื่อให้อ่านง่ายและแก้ไขได้สะดวก  
-
-ตัวอย่างที่ทำได้ เช่น:
-
-- ตรวจสอบสถานะของระบบผ่าน `/status`  
-- ส่งข้อความหรือข้อมูลทดสอบกลับไปยังผู้เรียกใช้ API  
-- ใช้เป็นพื้นฐานสำหรับต่อยอด API อื่น ๆ
+- ฝึกการใช้งาน Flask ในการสร้าง REST API  
+- เรียนรู้การจัดการโครงสร้างไฟล์ในโปรเจกต์ Backend  
+- ทดลองสร้าง endpoint แบบง่าย เช่น root path และ status check  
+- ใช้ Git และ GitHub สำหรับเก็บโค้ดและจัดการเวอร์ชัน  
+- สรุปผลและเขียนรายงานสิ่งที่ได้เรียนรู้จากการทำโปรเจกต์นี้
 
 ---
 
 ##  โครงสร้างโปรเจกต์ (Project Structure)
 
+```
+
 DEMO_FLASK_SERVICE/
 │
-├── app.py # ไฟล์หลักของ Flask
-├── requirements.txt # รายการ library ที่ใช้
-├── service/ # ตัวอย่างแยก logic ออกมาจาก app.py
-│ └── example_service.py
+├── app.py                 # ไฟล์หลักของ Flask และ Routing
+├── requirements.txt        # รายการ dependencies
+├── service/                # โฟลเดอร์เก็บ business logic
+    └── example_service.py  # ตัวอย่าง service logic
+
+```
+
+การแยกโครงสร้างไฟล์แบบนี้ช่วยให้โค้ดอ่านง่าย, แก้ไขง่าย และสามารถขยายฟีเจอร์ได้ในอนาคต
 
 ---
 
-##  วิธีการรันโปรเจกต์ (How to Run)
+##  เครื่องมือและเทคโนโลยีที่ใช้ (Tools & Technologies Used)
 
-1. **Clone โปรเจกต์**
-git clone https://github.com/teetayu/DEMO_FLASK_SERVICE
+| หมวด | รายละเอียด |
+|------|-------------|
+| Programming | Python 3 |
+| Framework | Flask |
+| Libraries | Flask, JSON, Virtual Environment |
+| Version Control | Git, GitHub |
+| Development Tools | VS Code, Postman |
 
+---
 
-2. **เข้าโฟลเดอร์โปรเจกต์**
+##  วิธีติดตั้งและรันโปรเจกต์ (Setup & Run)
+
+### 1️ Clone โปรเจกต์
+```
+
+git clone [https://github.com/teetayu/DEMO_FLASK_SERVICE](https://github.com/teetayu/DEMO_FLASK_SERVICE)
+
+```
+
+### 2️ เข้าโฟลเดอร์โปรเจกต์
+```
+
 cd DEMO_FLASK_SERVICE
 
+```
 
-3. **สร้าง Virtual Environment (แนะนำ)**
+### 3️ สร้าง Virtual Environment
+```
+
 python -m venv venv
-venv\Scripts\activate # Windows
+venv\Scripts\activate   # Windows
 
+```
 
-4. **ติดตั้ง Library**
+### 4️ ติดตั้ง Dependencies
+```
+
 pip install -r requirements.txt
 
+```
 
-5. **รัน Flask**
+### 5️ รัน Flask Server
+```
+
 python app.py
 
+````
 
-เมื่อเซิร์ฟเวอร์รันสำเร็จ สามารถเข้าที่  
+API จะเปิดที่  
 `http://127.0.0.1:5000/`
 
 ---
 
-##  ตัวอย่าง API ที่ทำ
+##  API ที่สร้างในโปรเจกต์นี้ (Example Endpoints)
 
+###  GET `/`
+ทดสอบว่าเซิร์ฟเวอร์ทำงานหรือไม่
+
+**Response**
+```json
+{
+  "message": "Flask Service Running"
+}
+````
 
 ---
 
- สรุปสิ่งที่ได้ทำในงานนี้ (Summary of Work Done)
+###  GET `/status`
 
-ในงานนี้ได้ทำสิ่งสำคัญดังนี้:
+ส่งสถานะของระบบและข้อความตอบกลับ
 
-ติดตั้งและตั้งค่า Flask Framework
+**Response**
 
-สร้าง Web Server ที่รันบน Localhost
+```json
+{
+  "status": "OK",
+  "service": "Demo Flask API"
+}
+```
 
-ทำ Routing แบบง่าย เช่น / และ /status
+---
 
-สร้าง Response แบบ JSON
+##  สิ่งที่ได้ทำในโปรเจกต์นี้ (Summary of Work Done)
 
-แยก Business Logic ออกไปไว้ในโฟลเดอร์ service/
+งานนี้ครอบคลุมสิ่งที่อาจารย์ต้องการให้ฝึก ดังนี้:
 
-ทดสอบ API ผ่าน Browser หรือ Postman
+###  การสร้าง Flask Application
 
-อัปโหลดโปรเจกต์ขึ้น GitHub
+* สร้างเซิร์ฟเวอร์ด้วย `Flask(__name__)`
+* รัน Web Server ภายในเครื่อง
 
-ใช้ Git ในการ push และจัดการเวอร์ชันของโค้ด
+###  การสร้าง Routing
 
-ทำเอกสาร README เพื่อสรุปงานให้ผู้อ่านเข้าใจโครงสร้างโปรเจกต์
+* กำหนดเส้นทาง API หลายแบบ
+* ทดสอบด้วย Browser และ Postman
 
- สิ่งที่ได้เรียนรู้จากโปรเจกต์นี้ (What I Learned)
+###  การแยกโครงสร้างโค้ด
 
-งานนี้ช่วยให้เข้าใจหลักการพื้นฐานของ Backend และการสร้าง Web API ได้แก่:
+* ย้าย logic ไปไว้ใน `service/example_service.py`
+* เพิ่มความสามารถในการขยายโปรเจกต์ในอนาคต
 
- 1) ความเข้าใจ Flask มากขึ้น
+###  การใช้งาน JSON Response
 
-วิธีสร้าง API ด้วย Python
+* ส่งข้อมูลกลับอย่างเป็นระบบ
+* เข้าใจการทำงานของ REST API มากขึ้น
 
-การกำหนด Route และ Response
+###  การใช้ Git/GitHub
 
-การจัดโครงสร้างโปรแกรมให้ขยายได้ง่ายขึ้น
+* clone / commit / push / pull
+* จัดเก็บงานให้อยู่ใน repository แบบมืออาชีพ
 
- 2) การทำงานของ REST API
+---
 
-วิธีรับ–ส่งข้อมูลระหว่าง Client และ Server
+##  สิ่งที่ได้เรียนรู้ (What I Learned)
 
-ความสำคัญของ JSON Response
+โปรเจกต์นี้ช่วยให้เข้าใจพื้นฐานหลายอย่างของงาน Backend และ DevOps ได้แก่:
 
- 3) การใช้งาน Git & GitHub ในโปรเจกต์จริง
+###  1) ความเข้าใจ Flask Framework
 
-การ commit, push, pull
+* วิธีใช้งาน Routing
+* การสร้าง Response
+* การจัดการโครงสร้างไฟล์
 
-การเก็บโปรเจกต์ใน Repository จริง
+###  2) ความเข้าใจ REST API
 
-ความสำคัญของ README ในการสรุปงาน
+* วิธีการรับ–ส่งข้อมูลแบบ JSON
+* หลักการออกแบบ endpoint
 
- 4) ทักษะการจัดระเบียบโค้ด
+###  3) ทักษะ Git & GitHub
 
-แยก service ออกจาก app
+* การ push โค้ดขึ้น GitHub
+* การใช้ repository เพื่อเก็บงานอย่างเป็นระบบ
+* ความสำคัญของ README ในโปรเจกต์จริง
 
-ทำให้โค้ดอ่านง่ายและแก้ไขได้ในอนาคต
+###  4) การพัฒนาในสภาพแวดล้อมจริง (Development Workflow)
 
- สรุปผลการทำงาน (Conclusion)
+* การใช้ virtual environment
+* การติดตั้ง dependencies
+* การรันระบบผ่าน Terminal
 
-โปรเจกต์นี้ช่วยให้เข้าใจพื้นฐานของการสร้าง Web Service ด้วย Flask
-รวมถึงการใช้งาน Git/GitHub ในการจัดการโปรเจกต์
+โดยรวมแล้วงานนี้ช่วยให้มีพื้นฐานที่แน่นขึ้นสำหรับงานพัฒนาระบบ Backend (API)
+และพร้อมต่อยอดไปสู่ระบบขนาดใหญ่ เช่น Machine Learning API หรือ Microservices
+
+---
+
+##  บทสรุป (Conclusion)
+
+โปรเจกต์ DEMO_FLASK_SERVICE เป็นการทดลองสร้างระบบ API ที่เรียบง่าย
+แต่มีประโยชน์อย่างมากในแง่การเรียนรู้ เพราะช่วยให้เข้าใจพื้นฐานของ Backend Development
+รวมถึงฝึกการใช้ GitHub และการจัดเอกสารโปรเจกต์อย่างเป็นระบบ
+
+---
