@@ -87,7 +87,7 @@ python app.py
 
 ---
 
- สรุปสิ่งที่ได้ทำในงานนี้ (Summary of Work Done)
+สรุปสิ่งที่ได้ทำในงานนี้ (Summary of Work Done)
 
 ในงานนี้ได้ทำสิ่งสำคัญดังนี้:
 
